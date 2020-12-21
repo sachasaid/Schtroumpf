@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #64b5f5;
+    height: 120px;
+    padding: 1em;
+    font-family: 'Teko', sans-serif;
+    .title-app {
+        display: flex;
+        align-items: center;
+        h1 {
+            margin: 0;
+            font-family: 'Teko', sans-serif;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            outline: none;
+        }
+    }
+    .register {
+        &-btn {
+            color: #64b5f5;
+            background-color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 25px;
+            outline: none;
+        }
+    }
+}
