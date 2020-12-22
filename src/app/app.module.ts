@@ -9,7 +9,7 @@ import { LoginComponent } from './Component/login/login.component';
 import { HomeComponent } from './Component/home/home.component';
 import { NavbarComponent } from './Component/navbar/navbar.component';
 import { UserComponent } from './Component/user/user.component';
-
+import { RegisterComponent } from './Component/register/register.component';
 
 
 
@@ -19,13 +19,13 @@ import { UserComponent } from './Component/user/user.component';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    UserComponent
+    UserComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

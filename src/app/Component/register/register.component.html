@@ -3,7 +3,7 @@
     <div class="card w-75">
         <div class="card-body">
             <div class="card-title">
-                <h2>LOGIN</h2>
+                <h2>REGISTER</h2>
             </div>
             <div class="form">
                 <form>
@@ -15,8 +15,12 @@
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
-                    <div class="btn-login">
-                        <button [routerLink]="['/user']" (click)="Login()" type="submit" class="btn btn-primary">LOGIN</button>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                    </div>
+                    <div class="btn-register">
+                        <button [routerLink]="['/login']" (click)="Register()" type="submit" class="btn btn-primary login">REGISTER</button>
                     </div>
                 </form>
             </div>

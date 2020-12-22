@@ -1,0 +1,52 @@
+.home {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+    }
+    &-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            margin: 0;
+            font-family: 'Teko', sans-serif;
+            color: #64b5f5;
+            font-size: 50px;
+        }
+    }
+    .btn-redirection {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: 5em;
+        width: 345px;
+    }
+}
+
+.login-btn {
+    color: white;
+    background-color: #64b5f5;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 25px;
+    outline: none;
+}
+
+.register-btn {
+    color: white;
+    background-color: rgb(0, 230, 0);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 25px;
+    outline: none;
+}

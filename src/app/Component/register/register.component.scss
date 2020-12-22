@@ -9,7 +9,7 @@
         justify-content: center;
         margin: 0;
         font-family: 'Teko', sans-serif;
-        color: #64b5f5;
+        color: rgb(0, 230, 0);
         font-size: 50px;
     }
     .form {
@@ -23,7 +23,7 @@
         animation: spin 1s linear infinite;
         padding-bottom: 5em;
     }
-    .btn-login {
+    .btn-register {
         display: flex;
         justify-content: center;
         padding-top: 2em;
