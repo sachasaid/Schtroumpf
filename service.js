@@ -1,17 +1,21 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
+const jwt = require("jsonwebtoken");
 var ObjectID = mongodb.ObjectID;
 var database;
-var FRIENDS_COLLECTION = "products";
+var FRIENDS_COLLECTION = "friends";
+const cors = require('cors');
 
 var app = express();
 
 app.use(bodyParser.json());
+app.use(cors())
+app.options('*', cors());
 
 var distDir = __dirname + "/dist/Schtroumpf";
 app.use(express.static(distDir));
-const LOCAL_DATABASE = "mongodb+srv://loc8r-admin:pmolikujyhtg@cluster0.qacuu.mongodb.net/app?retryWrites=true&w=majority";
+const LOCAL_DATABASE = "mongodb://localhost:27017/Schtroumpf";
 const LOCAL_PORT = 8080;
 
 mongodb.MongoClient.connect(process.env.MONGODB_URI || LOCAL_DATABASE, {
@@ -23,8 +27,6 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || LOCAL_DATABASE, {
         console.log(error);
         process.exit(1);
     }
-
-    // Save database object from the callback for reuse.
     database = client.db();
     console.log("Database connection done.");
 
@@ -60,6 +62,8 @@ app.post("/api/friends", function(req, res) {
         manageError(res, "Invalid friend input", "Family is mandatory.", 400);
     } else if (!product.alimentation) {
         manageError(res, "Invalid friend input", "Alimentation is mandatory.", 400);
+    } else if (!product.race) {
+        manageError(res, "Invalid friend input", "race is mandatory.", 400);
     } else {
         database.collection(FRIENDS_COLLECTION).insertOne(product, function(err, doc) {
             if (err) {
@@ -87,8 +91,18 @@ app.delete("/api/friends/:id", function(req, res) {
     }
 });
 
-// Errors handler.
 function manageError(res, reason, message, code) {
     console.log("Error: " + reason);
     res.status(code || 500).json({ "error": message });
 }
+
+let secret = 'some_secret'
+
+app.get('/token/sign', (req, res) => {
+    var userData = {
+        "name": "Sacha",
+        "id": '4321'
+    }
+    let token = jwt.sign(userData, secret, { expiresIn: '15s' })
+    res.status(200).json({ "token": token });
+})
