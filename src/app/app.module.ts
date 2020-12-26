@@ -11,6 +11,8 @@ import { RegisterComponent } from './Component/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginUserComponent } from './Component/login-user/login-user.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -22,6 +24,7 @@ import { LoginUserComponent } from './Component/login-user/login-user.component'
     UserComponent,
     RegisterComponent,
     LoginUserComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,9 @@ import { LoginUserComponent } from './Component/login-user/login-user.component'
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
