@@ -1,0 +1,24 @@
+<h1 style="display: flex; justify-content:center;" mat-dialog-title><strong>{{action}}</strong> Row</h1>
+<div mat-dialog-content>
+    <form [formGroup]="addForm" class="box">
+        <mat-form-field>
+            <input placeholder="{{action}} name" matInput [(ngModel)]="local_data.name" formControlName="name" maxlength="15">
+        </mat-form-field>
+        <mat-form-field>
+            <input placeholder="{{action}} age" matInput [(ngModel)]="local_data.age" formControlName="age" maxlength="80">
+        </mat-form-field>
+        <mat-form-field>
+            <input placeholder="{{action}} family" matInput [(ngModel)]="local_data.family" formControlName="family" maxlength="320">
+        </mat-form-field>
+        <mat-form-field>
+            <input placeholder="{{action}} food" matInput [(ngModel)]="local_data.food" formControlName="food" maxlength="10">
+        </mat-form-field>
+        <mat-form-field>
+            <input placeholder="{{action}} race" matInput [(ngModel)]="local_data.race" formControlName="race" maxlength="10">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions class="action-box">
+    <button mat-button type="submit" mat-flat-button color="primary" (click)="doAction()">{{action}}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

@@ -11,10 +11,22 @@ import { RegisterComponent } from './Component/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginUserComponent } from './Component/login-user/login-user.component';
+import { FriendsService } from './friends.service';
+import { AddBoxComponent } from './box/add-box/add-box.component';
+
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { FriendsService } from './friends.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 
+
+
+
+import { AddrowService } from './addrow.service';
 
 
 @NgModule({
@@ -25,6 +37,7 @@ import { FriendsService } from './friends.service';
     UserComponent,
     RegisterComponent,
     LoginUserComponent,
+    AddBoxComponent,
     
   ],
   imports: [
@@ -35,9 +48,14 @@ import { FriendsService } from './friends.service';
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatInputModule
   ],
-  providers: [FriendsService],
+  providers: [FriendsService, AddrowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
