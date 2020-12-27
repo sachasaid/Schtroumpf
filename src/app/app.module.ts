@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginUserComponent } from './Component/login-user/login-user.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { FriendsService } from './friends.service';
 
 
 
@@ -36,7 +37,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [FriendsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,52 +1,15 @@
     .container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        height: 80vh;
+        flex-direction: column;
         .full-width-table {
             width: 100%;
         }
-        .head-table {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            align-items: center;
-        }
-        .profil-information {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            ul {
-                display: flex;
-                justify-content: space-evenly;
-                flex-direction: column;
-                height: 416px;
-                padding-right: 3rem;
-            }
-            ul li {
-                list-style: none;
-                border: 2px solid #64b5f5;
-                border-radius: 50px;
-                padding: 8px 20px;
-                color: black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-        .w-75 {
-            width: 39%!important;
-            height: 50vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .card-body {
-            display: flex;
-            align-items: center;
-        }
         .list-of-friends {
-            width: 60%!important;
+            padding: 7em;
+            width: 100% !important;
+            height: 100% !important;
         }
         h5 {
             margin: 0;

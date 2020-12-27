@@ -1,38 +1,36 @@
 <app-navbar></app-navbar>
 <div class="container">
+    <div class="title">
+        <h5>FRIENDS LIST</h5>
+    </div>
     <div class="list-of-friends">
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" class="full-width-table">
                 <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef>id</th>
-                    <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
+                    <td mat-cell *matCellDef="let i = index">
+                        {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i + this.paginator.pageIndex * this.paginator.pageSize}}
+                    </td>
                 </ng-container>
-                <!-- Position Column -->
                 <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef>Name</th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                 </ng-container>
-
-                <!-- Name Column -->
                 <ng-container matColumnDef="age">
                     <th mat-header-cell *matHeaderCellDef> Age </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Age}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
                 </ng-container>
-
-                <!-- Weight Column -->
                 <ng-container matColumnDef="family">
                     <th mat-header-cell *matHeaderCellDef> Family </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Family}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.family}} </td>
                 </ng-container>
-
-                <!-- Symbol Column -->
                 <ng-container matColumnDef="food">
                     <th mat-header-cell *matHeaderCellDef> Food </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Food}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.food}} </td>
                 </ng-container>
                 <ng-container matColumnDef="race">
                     <th mat-header-cell *matHeaderCellDef> Race </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Race}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.race}} </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
