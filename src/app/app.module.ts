@@ -19,7 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDialogModule} from '@angular/material/dialog';
+  import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 
@@ -53,9 +53,13 @@ import { AddrowService } from './addrow.service';
     MatFormFieldModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    
   ],
-  providers: [FriendsService, AddrowService],
+  providers: [
+    {provide: MatDialogRef,
+      useValue: {}},
+    FriendsService, AddrowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

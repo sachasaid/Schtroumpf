@@ -61,17 +61,26 @@ export class UserComponent implements OnInit {
     });
   }
 
-    addRowData(row_obj: { name: any; age: any; family: any; food: any; race: any; }){
+    addRowData(row_obj: { _id: any; name: any; age: any; family: any; food: any; race: any; }){
     this.dataSource.data.push({
+      _id:row_obj._id,
       name:row_obj.name,
       age:row_obj.age,
       family:row_obj.family,
       food:row_obj.food,
       race:row_obj.race
     });
-    this.table.renderRows();
     return this.dataSource.filter = "";
     
+  }
+
+    deleted(elm: any) {
+    this.friendService.delFriends(elm).subscribe((response: any) => {
+      this.dataSource.data = this.dataSource.data.filter((o: Friends) => {
+        return o._id !== elm ? o : false;
+      });
+      console.log(this.dataSource.data);
+    });
   }
 
   public getAllFriends() {

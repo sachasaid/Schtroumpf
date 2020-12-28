@@ -39,8 +39,7 @@
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                     <td mat-cell *matCellDef="let row">
-                        <button mat-icon-button><mat-icon (click)="openSave('Update',row)">settings</mat-icon></button>
-                        <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+                        <button mat-icon-button class="btn-delete"><mat-icon (click)="deleted(row.ID)">delete_outline</mat-icon></button>
                     </td>
                 </ng-container>
 

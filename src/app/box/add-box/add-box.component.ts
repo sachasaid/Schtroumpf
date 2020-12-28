@@ -44,7 +44,7 @@ export class AddBoxComponent {
     )
     this.dialogRef.close({ event: this.action, data: this.local_data });
     this.dialogService.openSnackBar(this.message, 'body');
-    this._router.navigateByUrl("/refresh", { skipLocationChange: true }).then(() => {
+    this._router.navigateByUrl("/user", { skipLocationChange: true }).then(() => {
       console.log(decodeURI(this._location.path()));
       this._router.navigate([decodeURI(this._location.path())]);
     })

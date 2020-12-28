@@ -15,5 +15,9 @@ export class FriendsService {
     public postFriends(formData: any) {
     return this.http.post("http://localhost:8080/api/friends", formData);
   }
+
+  public delFriends(id: Object) {
+    return this.http.delete("http://localhost:8080/api/friends/:id" + '/' + id);
+  }
   
 }

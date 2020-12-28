@@ -34,3 +34,14 @@
             margin-top: 1em;
         }
     }
+    
+    .btn-delete {
+        display: flex;
+        justify-content: center;
+        border: none;
+        overflow: hidden;
+        background: red;
+        border-radius: 26px;
+        padding: 8px;
+        color: white;
+    }
