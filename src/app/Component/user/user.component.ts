@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { AddBoxComponent } from 'src/app/box/add-box/add-box.component';
-import { Friends } from 'src/app/friends';
-import { FriendsService } from 'src/app/friends.service';
+import { Friends } from 'src/app/shared/friends';
+import { FriendsService } from 'src/app/shared/friends.service';
 
 const ELEMENT_DATA: Friends[] = [];
 
@@ -79,6 +79,7 @@ export class UserComponent implements OnInit {
       this.dataSource.data = this.dataSource.data.filter((o: Friends) => {
         return o._id !== elm ? o : false;
       });
+      
       console.log(this.dataSource.data);
     });
   }

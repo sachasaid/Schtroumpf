@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddrowService } from 'src/app/addrow.service';
-import { Friends } from 'src/app/friends';
-import { FriendsService } from 'src/app/friends.service';
+import { Friends } from 'src/app/shared/friends';
+import { FriendsService } from 'src/app/shared/friends.service';
 import { Location } from '@angular/common';
 
 @Component({

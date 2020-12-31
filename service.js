@@ -2,18 +2,19 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 const jwt = require("jsonwebtoken");
-var expressJWT = require('express-jwt');
 var ObjectID = mongodb.ObjectID;
 var database;
 var FRIENDS_COLLECTION = "friends";
-var USERS_COLLECTION = "users"
+var USERS_COLLECTION = "users";
 const cors = require('cors');
 
+var User = require('./models/users');
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
+
 
 app.options(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -43,6 +44,53 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || LOCAL_DATABASE, {
         console.log("App now running on port", port);
     });
 });
+
+
+//register
+
+app.post('/register', (req, res) => {
+    console.log(req.body)
+    var user = req.body;
+
+    if (!user.login) {
+        manageError(res, "Invalid register", "Login is mandatory.", 400);
+    } else if (!user.password) {
+        manageError(res, "Invalid register", "Password is mandatory.", 400);
+    } else {
+        database.collection(USERS_COLLECTION).insertOne(user, function(err, doc) {
+            if (err) {
+                manageError(res, err.message, "Failed to create new register.");
+            } else {
+                res.status(201).json(doc.ops[0]);
+                console.log("POST USERS")
+            }
+        });
+    }
+})
+
+//register
+
+app.post('/login', (req, res) => {
+    console.log(req.body)
+    var user = req.body;
+
+    if (!user.login) {
+        manageError(res, "Invalid register", "Login is mandatory.", 400);
+    } else if (!user.password) {
+        manageError(res, "Invalid register", "Password is mandatory.", 400);
+    } else {
+        database.collection(USERS_COLLECTION).insertOne(user, function(err, doc) {
+            if (err) {
+                manageError(res, err.message, "Failed to create new register.");
+            } else {
+                res.status(201).json(doc.ops[0]);
+                console.log("POST USERS")
+            }
+        });
+    }
+})
+
+
 
 
 //friends
@@ -87,58 +135,12 @@ app.delete("/api/friends/:id", function(req, res) {
     if (req.params.id.length > 24 || req.params.id.length < 24) {
         manageError(res, "Invalid friend id", "ID must be a single String of 12 bytes or a string of 24 hex characters.", 400);
     } else {
-        database.collection(FRIENDS_COLLECTION).deleteOne({ _id: new ObjectID(req.params.id) }, function(err, result) {
+        database.collection(FRIENDS_COLLECTION).deleteOne({ _id: new String(req.params.id) }, function(err, result) {
             if (err) {
                 manageError(res, err.message, "Failed to delete friend.");
             } else {
                 res.status(200).json(req.params.id);
                 console.log("DELETE")
-            }
-        });
-    }
-});
-
-//users
-app.get("/api/users", function(req, res) {
-    database.collection(USERS_COLLECTION).find({}).toArray(function(error, data) {
-        if (error) {
-            manageError(res, err.message, "Failed to get contacts.");
-        } else {
-            res.status(200).json(data);
-            console.log("GET USER")
-        }
-    });
-});
-
-app.post("/api/users", function(req, res) {
-    var users = req.body;
-
-    if (!users.email) {
-        manageError(res, "Invalid users input", "Email is mandatory.", 400);
-    } else if (!users.password) {
-        manageError(res, "Invalid users input", "Password is mandatory.", 400);
-    } else {
-        database.collection(USERS_COLLECTION).insertOne(users, function(err, doc) {
-            if (err) {
-                manageError(res, err.message, "Failed to create new user.");
-            } else {
-                res.status(201).json(doc.ops[0]);
-                console.log("POST USERS")
-            }
-        });
-    }
-});
-
-app.delete("/api/users/:id", function(req, res) {
-    if (req.params.id.length > 24 || req.params.id.length < 24) {
-        manageError(res, "Invalid user id", "ID must be a single String of 12 bytes or a string of 24 hex characters.", 400);
-    } else {
-        database.collection(USERS_COLLECTION).deleteOne({ _id: new ObjectID(req.params.id) }, function(err, result) {
-            if (err) {
-                manageError(res, err.message, "Failed to delete user.");
-            } else {
-                res.status(200).json(req.params.id);
-                console.log("DELETE USERS")
             }
         });
     }

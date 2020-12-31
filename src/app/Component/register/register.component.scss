@@ -3,13 +3,13 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
     .card-title {
         display: flex;
         justify-content: center;
         margin: 0;
         font-family: 'Teko', sans-serif;
-        color: rgb(0, 230, 0);
+        color: #198753;
         font-size: 50px;
     }
     .form {
@@ -28,6 +28,16 @@
         justify-content: center;
         padding-top: 2em;
     }
+}
+
+.log {
+    padding-left: 1rem;
+}
+
+.btn-login {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 @keyframes spin {
