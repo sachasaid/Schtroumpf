@@ -11,6 +11,8 @@ var uri = "mongodb://localhost:27017/Schtroumpf";
 
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
 
+
+//friends POST , GET, DEL, PUT & GET id ///
 const FriendModel = mongoose.model("friends", {
     age: Number,
     family: String,
@@ -65,3 +67,27 @@ app.delete("/friends/:id", async(request, response) => {
 app.listen(8080, () => {
     console.log("Listening at :8080...");
 });
+
+
+//REGISTER
+
+//var router = Express.Router();
+var User = require('./backend/models/user');
+
+app.post('/register', function(req, res, next) {
+    var user = new User({
+        login: req.body.login,
+        password: User.hashPassword(req.body.password),
+        creation_dt: Date.now()
+    });
+
+    let promise = user.save();
+
+    promise.then(function(doc) {
+        return res.status(201).json(doc);
+    })
+
+    promise.catch(function(err) {
+        return res.status(501).json({ message: 'Error registering user.' })
+    })
+})
