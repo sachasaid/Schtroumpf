@@ -1,16 +1,30 @@
 const Express = require("express");
 const mongoose = require("mongoose");
 const BodyParser = require("body-parser");
+const cors = require('cors');
 
 var app = Express();
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
+app.use(cors())
 
-var uri = "mongodb://localhost:27017/Schtroumpf";
+app.options(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
+var distDir = __dirname + "/dist/Schtroumpf";
+app.use(Express.static(distDir));
+const LOCAL_DATABASE = "mongodb://localhost:27017/Schtroumpf";
+const LOCAL_PORT = 8080;
 
+mongoose.connect(process.env.MONGODB_URI || LOCAL_DATABASE, { useUnifiedTopology: true, useNewUrlParser: true });
+var server = app.listen(process.env.PORT || LOCAL_PORT, function() {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+});
 
 //friends POST , GET, DEL, PUT & GET id ///
 const FriendModel = mongoose.model("friends", {
@@ -64,9 +78,8 @@ app.delete("/friends/:id", async(request, response) => {
     }
 });
 
-app.listen(8080, () => {
-    console.log("Listening at :8080...");
-});
+
+
 
 
 //REGISTER
