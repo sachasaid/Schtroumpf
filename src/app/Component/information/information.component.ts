@@ -14,7 +14,7 @@ export class InformationComponent implements OnInit {
     this._authService.getLogin()
     .subscribe(
       data => this.login = data.toString(),
-      error => this._router.navigate(['/main/login'])
+      error => this._router.navigate(['../login'])
     )
    }
 
