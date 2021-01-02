@@ -27,7 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { AddrowService } from './addrow.service';
 import { AuthserviceService } from './shared/authservice.service';
-
+import { InformationComponent } from './Component/information/information.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { AuthserviceService } from './shared/authservice.service';
     RegisterComponent,
     LoginUserComponent,
     AddBoxComponent,
+    InformationComponent,
     
   ],
   imports: [

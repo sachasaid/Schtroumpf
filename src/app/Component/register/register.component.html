@@ -22,18 +22,19 @@
                         <input type="password" class="form-control" id="ConfirmPassword" formControlName="cfpassword" placeholder="Confirm Password" required>
                         <span style="color: red;" *ngIf="isValid('cfpassword')">Enter the same password!</span>
                     </div>
-                    <div class="btn-register">
-                        <button type="submit" (click)="register()" class="btn btn-success register">REGISTER</button>
-                    </div>
+
                     <div style="text-align: center; color: blue;">
                         {{successMessage}}
+                    </div>
+                    <div class="btn-register">
+                        <button type="submit" (click)="register()" class="btn btn-success register">REGISTER</button>
                     </div>
                 </form>
 
                 <div class="btn-login">
                     <div>Already have an account ?</div>
                     <div class="log">
-                        <button [routerLink]="['/login']" class="btn btn-primary login">Login</button>
+                        <button (click)="movetoLogin()" class="btn btn-primary login">Login</button>
                     </div>
                 </div>
             </div>

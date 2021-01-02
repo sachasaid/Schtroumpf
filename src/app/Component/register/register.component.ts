@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthserviceService } from 'src/app/shared/authservice.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class RegisterComponent{
   myForm: FormGroup;
   successMessage =  '';
 
-  constructor(private authService: AuthserviceService) {
+  constructor(private authService: AuthserviceService, private _router: Router, private _activatedRoute: ActivatedRoute) {
     this.myForm = new FormGroup({
       login: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
@@ -45,15 +46,23 @@ export class RegisterComponent{
     }
     return null;
   }
+    movetoLogin() {
+    this._router.navigate(['../loginUser'], {relativeTo: this._activatedRoute});
+  }
 
   register() {
     console.log(this.myForm.value);
-    this.authService.submitRegister(this.myForm.value)
-    .subscribe(
-      data => this.successMessage = "Register Success",
-      error => this.successMessage = "Some Error"
-    )
+    if (this.myForm.valid) {
+      this.authService.submitRegister(this.myForm.value)
+      .subscribe(
+        data => this.successMessage = "Register Success",
+        error => this.successMessage = "Some Error"
+      )
+      this.movetoLogin();
+    }
+
   }
+
 }
 
 

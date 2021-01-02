@@ -2,6 +2,7 @@ const Express = require("express");
 const mongoose = require("mongoose");
 const BodyParser = require("body-parser");
 const cors = require('cors');
+var jwt = require('jsonwebtoken');
 
 var app = Express();
 
@@ -104,3 +105,49 @@ app.post('/register', function(req, res, next) {
         return res.status(501).json({ message: 'Error registering user.' })
     })
 })
+
+//LOGIN
+
+app.post('/login', function(req, res, next) {
+    let promise = User.findOne({ login: req.body.login }).exec();
+
+    promise.then(function(doc) {
+        if (doc) {
+            if (doc.isValid(req.body.password)) {
+                // generate token
+                let token = jwt.sign({ login: doc.login }, 'secret', { expiresIn: '3h' });
+
+                return res.status(200).json(token);
+
+            } else {
+                return res.status(501).json({ message: ' Invalid Credentials' });
+            }
+        } else {
+            return res.status(501).json({ message: 'User email is not registered.' })
+        }
+    });
+
+    promise.catch(function(err) {
+        return res.status(501).json({ message: 'Some internal error' });
+    })
+})
+
+app.get('/user', verifyToken, function(req, res, next) {
+    return res.status(200).json(decodedToken.login);
+})
+
+var decodedToken = '';
+
+function verifyToken(req, res, next) {
+    let token = req.query.token;
+
+    jwt.verify(token, 'secret', function(err, tokendata) {
+        if (err) {
+            return res.status(400).json({ message: ' Unauthorized request' });
+        }
+        if (tokendata) {
+            decodedToken = tokendata;
+            next();
+        }
+    })
+}

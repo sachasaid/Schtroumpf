@@ -6,19 +6,25 @@
                 <h2>LOGIN</h2>
             </div>
             <div class="form">
-                <form>
+                <form [formGroup]="loginForm">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" formControlName="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <span style="color: red;" *ngIf="isValid('login')">Login is required !</span>
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <span style="color: red;" *ngIf="isValid('password')">Login is required !</span>
                     </div>
                     <div class="btn-login">
-                        <button [routerLink]="['/user']" type="submit" class="btn btn-primary">LOGIN</button>
+                        <button (click)=login() type="submit" class="btn btn-primary">LOGIN</button>
                     </div>
                 </form>
+            </div>
+            <div class="btn-register">
+                <button type="submit" (click)="login()" class="btn btn-success register">REGISTER</button>
             </div>
         </div>
     </div>
