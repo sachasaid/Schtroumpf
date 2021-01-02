@@ -9,15 +9,15 @@ export class FriendsService {
   constructor(private http: HttpClient) { }
 
   public getFriends() {
-    return this.http.get("http://localhost:8080/api/friends");
+    return this.http.get("http://localhost:8080/users");
   }
 
     public postFriends(formData: any) {
-    return this.http.post("http://localhost:8080/api/friends", formData);
+    return this.http.post("http://localhost:8080/users", formData);
   }
 
   public delFriends(id: any) {
-    return this.http.delete("http://localhost:8080/api/friends/:id" + '/' + id);
+    return this.http.delete("http://localhost:8080/users" + '/' + id);
   }
   
 }

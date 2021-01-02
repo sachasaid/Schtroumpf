@@ -3,7 +3,11 @@
         <img src="../../../assets/icon-schtroumpf.svg" alt="">
         <h1 [routerLink]="['']">SCHTROUMF</h1>
     </div>
+
     <div class="logout">
+        <button (click)="movetoFriends()" class="register-btn">
+            Friends
+        </button>
         <button (click)="logout()" class="register-btn">
             Logout
         </button>

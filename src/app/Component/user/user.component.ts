@@ -15,7 +15,7 @@ const ELEMENT_DATA: Friends[] = [];
 })
 
 export class UserComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'age', 'family', 'food', 'race', 'action' ];
+  displayedColumns: string[] = ['id', 'login', 'password', 'action' ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   table: any;
   action: any;
@@ -53,7 +53,6 @@ export class UserComponent implements OnInit {
       data: obj
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHH")
       console.log(result.data);
       if (result.event == 'Update') {
         console.log('update')
@@ -61,14 +60,11 @@ export class UserComponent implements OnInit {
     });
   }
 
-    addRowData(row_obj: { _id: any; name: any; age: any; family: any; food: any; race: any; }){
+    addRowData(row_obj: { _id: any; login: any; password: any; }){
     this.dataSource.data.push({
       _id:row_obj._id,
-      name:row_obj.name,
-      age:row_obj.age,
-      family:row_obj.family,
-      food:row_obj.food,
-      race:row_obj.race
+      login:row_obj.login,
+      password:row_obj.password
     });
     return this.dataSource.filter = "";
     

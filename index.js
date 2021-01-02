@@ -35,7 +35,7 @@ const FriendModel = mongoose.model("friends", {
     food: String
 });
 
-app.post("/friends", async(request, response) => {
+app.post("/users", async(request, response) => {
     try {
         var friend = new FriendModel(request.body);
         var result = await friend.save();
@@ -44,25 +44,25 @@ app.post("/friends", async(request, response) => {
         response.status(500).send(error);
     }
 });
-app.get("/friends", async(request, response) => {
+app.get("/users", async(request, response) => {
     try {
-        var result = await FriendModel.find().exec();
+        var result = await User.find().exec();
         response.send(result);
     } catch (error) {
         response.status(500).send(error);
     }
 });
-app.get("/friends/:id", async(request, response) => {
+app.get("/users/:id", async(request, response) => {
     try {
-        var person = await FriendModel.findById(request.params.id).exec();
+        var person = await User.findById(request.params.id).exec();
         response.send(person);
     } catch (error) {
         response.status(500).send(error);
     }
 });
-app.put("/friends/:id", async(request, response) => {
+app.put("/users/:id", async(request, response) => {
     try {
-        var person = await FriendModel.findById(request.params.id).exec();
+        var person = await User.findById(request.params.id).exec();
         person.set(request.body);
         var result = await person.save();
         response.send(result);
@@ -70,9 +70,9 @@ app.put("/friends/:id", async(request, response) => {
         response.status(500).send(error);
     }
 });
-app.delete("/friends/:id", async(request, response) => {
+app.delete("/users/:id", async(request, response) => {
     try {
-        var result = await FriendModel.deleteOne({ _id: request.params.id }).exec();
+        var result = await User.deleteOne({ _id: request.params.id }).exec();
         response.send(result);
     } catch (error) {
         response.status(500).send(error);
@@ -105,6 +105,8 @@ app.post('/register', function(req, res, next) {
         return res.status(501).json({ message: 'Error registering user.' })
     })
 })
+
+
 
 //LOGIN
 
