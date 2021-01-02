@@ -27,11 +27,8 @@ export class AddBoxComponent {
     this.local_data = {...data};
     this.action = this.local_data.action;
     this.addForm = fb.group({
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      family: ['', Validators.required],
-      food: ['', Validators.required],
-      race: ['', Validators.required],
+      login: ['', Validators.required],
+      password: ['', Validators.required],
     });
     }
     doAction(){

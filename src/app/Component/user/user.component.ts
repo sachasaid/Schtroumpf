@@ -79,9 +79,14 @@ export class UserComponent implements OnInit {
       console.log(this.dataSource.data);
     });
   }
+  hashPassword(password: string){
+    return "*".repeat(password.length)
+  }
 
   public getAllFriends() {
     let resp = this.friendService.getFriends();
     resp.subscribe(report => this.dataSource.data= report as Friends[])
   }
 }
+
+

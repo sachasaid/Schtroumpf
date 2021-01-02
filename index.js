@@ -37,7 +37,7 @@ const FriendModel = mongoose.model("friends", {
 
 app.post("/users", async(request, response) => {
     try {
-        var friend = new FriendModel(request.body);
+        var friend = new User(request.body);
         var result = await friend.save();
         response.send(result);
     } catch (error) {
