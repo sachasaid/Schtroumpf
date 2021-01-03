@@ -44,6 +44,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    &-container {
+        background-color: #198754;
+        font-family: 'Teko', sans-serif;
+    }
 }
 
 @keyframes spin {

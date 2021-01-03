@@ -1,49 +1,58 @@
-<div class="container">
-    <img class="img-schtroumf-1" src="../../../assets/icon-schtroumpf.svg" alt="" srcset="">
-    <div class="card w-75">
-        <div class="card-body">
-            <div class="card-title">
-                <h2>LOGIN</h2>
-            </div>
-            <div class="form">
-                <form [formGroup]="loginForm">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" formControlName="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <span style="color: red;" *ngIf="isValid('login')">Login is required !</span>
+<div class="login-page">
+    <div class="container">
+        <img class="img-schtroumf-1" src="../../../assets/icon-schtroumpf.svg" alt="" srcset="">
+        <div class="card w-75">
+            <div class="card-body">
+                <div class="card-title">
+                    <h2>LOGIN</h2>
+                </div>
+                <div class="form">
+                    <form [formGroup]="loginForm">
+                        <div class="login">
+                            <div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <input type="email" formControlName="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <span style="color: red;" *ngIf="isValid('login')">Login is required !</span>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        <span style="color: red;" *ngIf="isValid('password')">Login is required !</span>
-                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <span style="color: red;" *ngIf="isValid('password')">Login is required !</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Age</label>
+                                    <input formControlName="age" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Family</label>
+                                    <input formControlName="family" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Race</label>
+                                    <input formControlName="race" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Food</label>
+                                    <input formControlName="food" class="form-control">
+                                </div>
+                                <div class="btn-login">
+                                    <button (click)=login() type="submit" class="btn btn-primary">LOGIN</button>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">age</label>
-                        <input formControlName="age" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">family</label>
-                        <input formControlName="family" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">race</label>
-                        <input formControlName="race" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">food</label>
-                        <input formControlName="food" class="form-control">
-                    </div>
-                    <div class="btn-login">
-                        <button (click)=login() type="submit" class="btn btn-primary">LOGIN</button>
-                    </div>
-                </form>
-            </div>
-            <div class="btn-register">
-                <button type="submit" (click)="movetoRegister()" class="btn btn-success register">REGISTER</button>
+
+                    </form>
+                </div>
+                <div class="btn-register">
+                    <button type="submit" (click)="movetoRegister()" class="btn btn-success register">REGISTER</button>
+                </div>
             </div>
         </div>
+        <img class="img-schtroumf-2" src="../../../assets/icon-schtroumpf.svg" alt="" srcset="">
     </div>
-    <img class="img-schtroumf-2" src="../../../assets/icon-schtroumpf.svg" alt="" srcset="">
 </div>

@@ -1,19 +1,21 @@
+.login-page {
+    background-color: #64b5f5;
+    font-family: 'Teko', sans-serif;
+}
+
 .container {
+    background-color: transparent;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
     .card-title {
         display: flex;
         justify-content: center;
         margin: 0;
-        font-family: 'Teko', sans-serif;
         color: #64b5f5;
         font-size: 50px;
-    }
-    .form {
-        line-height: 4em;
     }
     .img-schtroumf-1 {
         animation: spin 1s linear infinite;
@@ -28,6 +30,13 @@
         justify-content: center;
         padding-top: 2em;
     }
+}
+
+.login {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Teko', sans-serif;
 }
 
 @keyframes spin {

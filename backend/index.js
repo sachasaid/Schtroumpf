@@ -131,6 +131,8 @@ app.post('/login', function(req, res, next) {
     })
 })
 
+//GET INFORMATIONS
+
 app.get('/login', verifyToken, function(req, res, next) {
     return res.status(200).json(decodedToken.login);
 })

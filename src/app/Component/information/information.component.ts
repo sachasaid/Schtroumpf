@@ -15,7 +15,11 @@ export class InformationComponent implements OnInit {
   race = '';
   food = '';
   constructor(private _authService: AuthserviceService, private _router: Router) {
-    this._authService.getLogin()
+
+   }
+
+  ngOnInit(): void {
+        this._authService.getLogin()
     .subscribe(
       data => this.login = data.toString(),
       error => this._router.navigate(['../loginUser'])
@@ -44,10 +48,6 @@ export class InformationComponent implements OnInit {
       error => this._router.navigate(['../loginUser'])
 
     )
-
-   }
-
-  ngOnInit(): void {
   }
 
 }

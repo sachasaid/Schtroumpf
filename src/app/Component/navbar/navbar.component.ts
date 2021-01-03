@@ -19,5 +19,8 @@ export class NavbarComponent implements OnInit {
   }
   movetoFriends(){
     this._router.navigate(['../friends'])
+  }
+    movetoprofil(){
+    this._router.navigate(['../info'])
   } 
 }

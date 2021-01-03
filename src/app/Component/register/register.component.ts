@@ -16,10 +16,6 @@ export class RegisterComponent{
     this.myForm = new FormGroup({
       login: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
-      age: new FormControl(null, Validators.required),
-      family: new FormControl(null, Validators.required),
-      race: new FormControl(null, Validators.required),
-      food: new FormControl(null, Validators.required),
       cfpassword: new FormControl(null, this.passValid)
     });
     this.myForm.controls.password.valueChanges
@@ -56,6 +52,7 @@ export class RegisterComponent{
 
   register() {
     console.log(this.myForm.value);
+    window.location.reload()
     if (this.myForm.valid) {
       this.authService.submitRegister(this.myForm.value)
       .subscribe(
