@@ -7,20 +7,46 @@
             </div>
             <div class="form">
                 <form [formGroup]="myForm">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Login</label>
-                        <input type="email" class="form-control" formControlName="login" placeholder="Enter Login" required>
-                        <span style="color: red;" *ngIf="isValid('login')">Login is required !</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Password</label>
-                        <input type="password" class="form-control" id="Password" formControlName="password" placeholder="Enter Password" required>
-                        <span style="color: red;" *ngIf="isValid('password')">Password is required !</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Confirm Password</label>
-                        <input type="password" class="form-control" id="ConfirmPassword" formControlName="cfpassword" placeholder="Confirm Password" required>
-                        <span style="color: red;" *ngIf="isValid('cfpassword')">Enter the same password!</span>
+                    <div class="register">
+                        <div class="left">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Login</label>
+                                <input type="email" class="form-control" formControlName="login" placeholder="Enter Login" required>
+                                <span style="color: red;" *ngIf="isValid('login')">Login is required !</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Password</label>
+                                <input type="password" class="form-control" id="Password" formControlName="password" placeholder="Enter Password" required>
+                                <span style="color: red;" *ngIf="isValid('password')">Password is required !</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Confirm Password</label>
+                                <input type="password" class="form-control" id="ConfirmPassword" formControlName="cfpassword" placeholder="Confirm Password" required>
+                                <span style="color: red;" *ngIf="isValid('cfpassword')">Enter the same password!</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Age</label>
+                                <input class="form-control" formControlName="age" placeholder="Enter Age" required>
+                                <span style="color: red;" *ngIf="isValid('age')">Enter age !</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Family</label>
+                                <input class="form-control" formControlName="family" placeholder="Enter Family" required>
+                                <span style="color: red;" *ngIf="isValid('family')">Enter family !</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Race</label>
+                                <input class="form-control" formControlName="race" placeholder="Enter Race" required>
+                                <span style="color: red;" *ngIf="isValid('race')"> Enter race !</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Food</label>
+                                <input class="form-control" formControlName="food" placeholder="Enter Food" required>
+                                <span style="color: red;" *ngIf="isValid('food')">Enter food !</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="text-align: center; color: blue;">

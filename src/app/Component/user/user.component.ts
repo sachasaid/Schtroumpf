@@ -4,7 +4,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { AddBoxComponent } from 'src/app/box/add-box/add-box.component';
 import { Friends } from 'src/app/shared/friends';
-import { FriendsService } from 'src/app/shared/friends.service';
+import { UserService } from 'src/app/shared/user.service';
 
 const ELEMENT_DATA: Friends[] = [];
 
@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   action: any;
 
 
-  constructor(private friendService: FriendsService, public dialog: MatDialog) {}
+  constructor(private friendService: UserService, public dialog: MatDialog) {}
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 

@@ -40,6 +40,12 @@
     align-items: center;
 }
 
+.register {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(360deg);

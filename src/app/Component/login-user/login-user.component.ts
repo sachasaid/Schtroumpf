@@ -11,10 +11,15 @@ import { AuthserviceService } from 'src/app/shared/authservice.service';
 export class LoginUserComponent implements OnInit {
 
   loginForm: FormGroup
+
   constructor(private authService: AuthserviceService, private _router: Router, private _activatedRoute: ActivatedRoute ) {
     this.loginForm = new FormGroup({
       login: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
+      age: new FormControl(null),
+      family: new FormControl(null),
+      race: new FormControl(null),
+      food: new FormControl(null),
     })
    }
 

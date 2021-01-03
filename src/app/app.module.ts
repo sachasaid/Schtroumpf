@@ -10,7 +10,7 @@ import { RegisterComponent } from './Component/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginUserComponent } from './Component/login-user/login-user.component';
-import { FriendsService } from './shared/friends.service';
+import { UserService } from './shared/user.service';
 import { AddBoxComponent } from './box/add-box/add-box.component';
 
 
@@ -21,6 +21,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -54,12 +55,12 @@ import { InformationComponent } from './Component/information/information.compon
     MatDialogModule,
     MatSnackBarModule,
     MatInputModule,
-    
+    MatCardModule    
   ],
   providers: [
     {provide: MatDialogRef,
       useValue: {}},
-    FriendsService, AddrowService, AuthserviceService],
+    UserService, AddrowService, AuthserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

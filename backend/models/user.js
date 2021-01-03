@@ -5,6 +5,10 @@ var bcrypt = require('bcrypt');
 var schema = new Schema({
     login: { type: String, require: true },
     password: { type: String, require: true },
+    age: { type: String, require: true },
+    family: { type: String, require: true },
+    race: { type: String, require: true },
+    food: { type: String, require: true },
     creation_dt: { type: Date, require: true }
 });
 

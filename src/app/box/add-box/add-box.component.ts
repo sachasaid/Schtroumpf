@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddrowService } from 'src/app/addrow.service';
 import { Friends } from 'src/app/shared/friends';
-import { FriendsService } from 'src/app/shared/friends.service';
+import { UserService } from 'src/app/shared/user.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -21,7 +21,7 @@ export class AddBoxComponent {
   user: any
   constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddBoxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Friends,
-    private dialogService: AddrowService, private friends: FriendsService,
+    private dialogService: AddrowService, private friends: UserService,
     public _router: Router, public _location: Location) {
       console.log(data);
     this.local_data = {...data};

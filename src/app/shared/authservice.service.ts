@@ -21,7 +21,35 @@ export class AuthserviceService {
   }
 
   getLogin() {
-    return this._http.get("http://localhost:8080/user", {
+    return this._http.get("http://localhost:8080/login", {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token')!)
+    });
+  }
+
+    getAge() {
+    return this._http.get("http://localhost:8080/age", {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token')!)
+    });
+  }
+
+    getFamily() {
+    return this._http.get("http://localhost:8080/family", {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token')!)
+    });
+  }
+
+    getRace() {
+    return this._http.get("http://localhost:8080/race", {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token')!)
+    });
+  }
+
+    getFood() {
+    return this._http.get("http://localhost:8080/food", {
       observe: 'body',
       params: new HttpParams().append('token', localStorage.getItem('token')!)
     });
