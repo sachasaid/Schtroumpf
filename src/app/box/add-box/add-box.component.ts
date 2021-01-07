@@ -43,7 +43,6 @@ export class AddBoxComponent {
               }
             }
           )
-          // this.dialogRef.close({ event: this.action, data: this.local_data });
         }
         console.log(this.myForm.value);
     }

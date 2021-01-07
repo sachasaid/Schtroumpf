@@ -40,6 +40,7 @@ export class UserComponent implements OnInit {
       data:obj
     });
     dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
       if(result.event == 'Add'){
         this.addRowData(result.data);
       }
