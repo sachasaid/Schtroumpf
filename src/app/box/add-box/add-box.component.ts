@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddrowService } from 'src/app/addrow.service';
 import { Friends } from 'src/app/shared/friends';
 import { UserService } from 'src/app/shared/user.service';
 import { Location } from '@angular/common';
+import { AuthserviceService } from 'src/app/shared/authservice.service';
 
 @Component({
   selector: 'app-add-box',
@@ -13,39 +14,39 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-box.component.scss']
 })
 export class AddBoxComponent {
-  addForm: FormGroup;
-
+   myForm: FormGroup;  serverErrorMessages: string | undefined;
   action: string;
   local_data: any;
   message: any
   user: any
-  constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddBoxComponent>,
+  constructor(public dialogRef: MatDialogRef<AddBoxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Friends,
-    private dialogService: AddrowService, private friends: UserService,
+    private dialogService: AddrowService, private authService: AuthserviceService,
     public _router: Router, public _location: Location) {
       console.log(data);
     this.local_data = {...data};
     this.action = this.local_data.action;
-    this.addForm = fb.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+    this.myForm = new FormGroup({
+          login: new FormControl(null, Validators.required),
+          password: new FormControl(null, Validators.required),
+        });
     }
     doAction(){
-    this.user = this.addForm.value;
-    this.friends.postFriends(this.user)
-    .subscribe(
-      (res) => {
-        console.warn("result", res);
-      } 
-    )
-    this.dialogRef.close({ event: this.action, data: this.local_data });
-    this.dialogService.openSnackBar(this.message, 'body');
-    this._router.navigateByUrl("/user", { skipLocationChange: true }).then(() => {
-      console.log(decodeURI(this._location.path()));
-      this._router.navigate([decodeURI(this._location.path())]);
-    })
-  }
+    if (this.myForm.valid) {
+          this.authService.submitRegister(this.myForm.value)
+          .subscribe(
+            data => this.closeDialog(),
+            error => {
+              if (error.status === 422) {
+                this.serverErrorMessages = "LOGIN ALREADY EXIST";
+                this.myForm.reset();
+              }
+            }
+          )
+          // this.dialogRef.close({ event: this.action, data: this.local_data });
+        }
+        console.log(this.myForm.value);
+    }
   closeDialog(){
     this.dialogRef.close({event:'Cancel'});
   }

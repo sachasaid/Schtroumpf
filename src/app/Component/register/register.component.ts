@@ -57,8 +57,11 @@ export class RegisterComponent{
       .subscribe(
         data => {
                 this.successMessage = true;
-                setTimeout(() => this.successMessage = false, 4000);
-                this._router.navigateByUrl('/loginUser');
+                setTimeout(()=>{                           //<<<---using ()=> syntax
+                      this.successMessage = false;
+                      this._router.navigateByUrl('/loginUser');
+                }, 2000);
+                
         },
         error => {
           if (error.status === 422) {
@@ -70,6 +73,7 @@ export class RegisterComponent{
     }
     console.log(this.myForm.value);
   }
+
 }
 
 
