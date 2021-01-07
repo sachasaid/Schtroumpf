@@ -27,11 +27,9 @@ var server = app.listen(process.env.PORT || LOCAL_PORT, function() {
     console.log("App now running on port", port);
 });
 
-
-
-
 // POST GET && PUT Users///
 
+var User = require('./models/user');
 app.post("/users", async(request, response) => {
     try {
         var user = new User(request.body);
@@ -80,7 +78,7 @@ app.delete("/users/:id", async(request, response) => {
 
 //REGISTER
 
-var User = require('./models/user');
+
 
 app.post('/register', function(req, res, next) {
     var user = new User({
@@ -115,7 +113,7 @@ app.post('/login', function(req, res, next) {
     promise.then(function(doc) {
         if (doc) {
             if (doc.isValid(req.body.password)) {
-                let token = jwt.sign({ login: doc.login, age: req.body.age, family: req.body.family, race: req.body.race, food: req.body.food }, 'secret', { expiresIn: '3h' });
+                let token = jwt.sign({ login: doc.login, password: doc.password, age: req.body.age, family: req.body.family, race: req.body.race, food: req.body.food }, 'secret', { expiresIn: '3h' });
 
                 return res.status(200).json(token);
 
@@ -133,10 +131,25 @@ app.post('/login', function(req, res, next) {
     })
 })
 
+//POST INFORMATIONS
+app.post("/info", async(request, response) => {
+    try {
+        var user = new User(request.body);
+        var result = await user.save();
+        response.send(result);
+    } catch (error) {
+        response.status(500).send(error);
+    }
+});
+
 //GET INFORMATIONS
 
 app.get('/login', verifyToken, function(req, res, next) {
     return res.status(200).json(decodedToken.login);
+})
+
+app.get('/password', verifyToken, function(req, res, next) {
+    return res.status(200).json(decodedToken.password);
 })
 
 app.get('/age', verifyToken, function(req, res, next) {

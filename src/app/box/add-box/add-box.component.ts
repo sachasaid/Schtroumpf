@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AddrowService } from 'src/app/addrow.service';
 import { Friends } from 'src/app/shared/friends';
-import { UserService } from 'src/app/shared/user.service';
 import { Location } from '@angular/common';
 import { AuthserviceService } from 'src/app/shared/authservice.service';
 
@@ -14,16 +12,16 @@ import { AuthserviceService } from 'src/app/shared/authservice.service';
   styleUrls: ['./add-box.component.scss']
 })
 export class AddBoxComponent {
-   myForm: FormGroup;  serverErrorMessages: string | undefined;
+   myForm: FormGroup;  
+   serverErrorMessages: string | undefined;
   action: string;
   local_data: any;
-  message: any
   user: any
   constructor(public dialogRef: MatDialogRef<AddBoxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Friends,
-    private dialogService: AddrowService, private authService: AuthserviceService,
+    private authService: AuthserviceService,
     public _router: Router, public _location: Location) {
-      console.log(data);
+    console.log(data);
     this.local_data = {...data};
     this.action = this.local_data.action;
     this.myForm = new FormGroup({

@@ -46,21 +46,6 @@ export class UserComponent implements OnInit {
       }
     });
   }
-   openSave(action: any, obj: { action: any; }) {
-    obj.action = action;
-    let dialogRef = this.dialog.open(AddBoxComponent, {
-      width: '800px',
-      disableClose: true,
-      data: obj
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result.data);
-      if (result.event == 'Update') {
-        console.log('update')
-      }
-    });
-  }
-
     addRowData(row_obj: { _id: any; login: any; password: any; }){
     this.dataSource.data.push({
       _id:row_obj._id,

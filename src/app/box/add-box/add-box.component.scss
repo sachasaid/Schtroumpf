@@ -13,7 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .mat-form-field {
@@ -24,4 +23,10 @@
     display: flex;
     justify-content: center;
     margin-top: 2em;
+}
+
+.action-btn-1 {}
+
+.action-btn-2 {
+    margin-left: 2em;
 }

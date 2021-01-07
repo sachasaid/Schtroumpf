@@ -24,11 +24,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 
 
-
-
-import { AddrowService } from './addrow.service';
 import { AuthserviceService } from './shared/authservice.service';
 import { InformationComponent } from './Component/information/information.component';
+import { UpdateInfoComponent } from './box/update-info/update-info.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +37,7 @@ import { InformationComponent } from './Component/information/information.compon
     LoginUserComponent,
     AddBoxComponent,
     InformationComponent,
+    UpdateInfoComponent,
     
   ],
   imports: [
@@ -60,7 +59,7 @@ import { InformationComponent } from './Component/information/information.compon
   providers: [
     {provide: MatDialogRef,
       useValue: {}},
-    UserService, AddrowService, AuthserviceService],
+    UserService, AuthserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

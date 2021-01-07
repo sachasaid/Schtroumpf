@@ -20,6 +20,12 @@ export class AuthserviceService {
     });
   }
 
+   postinfo(body: any) {
+    return this._http.post("http://localhost:8080/info", body, {
+      observe: 'body'
+    });
+  }
+
   getLogin() {
     return this._http.get("http://localhost:8080/login", {
       observe: 'body',
@@ -50,6 +56,12 @@ export class AuthserviceService {
 
     getFood() {
     return this._http.get("http://localhost:8080/food", {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token')!)
+    });
+  }
+    getPassword() {
+    return this._http.get("http://localhost:8080/password", {
       observe: 'body',
       params: new HttpParams().append('token', localStorage.getItem('token')!)
     });

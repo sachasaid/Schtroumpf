@@ -11,6 +11,7 @@ import { AuthserviceService } from 'src/app/shared/authservice.service';
 export class LoginUserComponent implements OnInit {
 
   loginForm: FormGroup
+  serverErrorMessages: string | undefined;
 
   constructor(private authService: AuthserviceService, private _router: Router, private _activatedRoute: ActivatedRoute ) {
     this.loginForm = new FormGroup({
@@ -40,7 +41,12 @@ export class LoginUserComponent implements OnInit {
           localStorage.setItem('token', data.toString());
           this._router.navigateByUrl('/info');
         },
-        error => {}
+        error => {
+          if (error.status === 501) {
+            this.serverErrorMessages = "User login is not registered.";
+            this.loginForm.reset();
+          }
+        }
       )
       
     }
