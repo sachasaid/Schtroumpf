@@ -38,15 +38,16 @@ export class LoginUserComponent implements OnInit {
         data => {
           console.log(data);
           localStorage.setItem('token', data.toString());
+          this._router.navigateByUrl('/info');
         },
         error => {}
       )
-      this._router.navigate(['../info']);
+      
     }
 
   }
     movetoRegister() {
-    this._router.navigate(['../register'], {relativeTo: this._activatedRoute});
+    this._router.navigateByUrl('/register');
   }
 
 }

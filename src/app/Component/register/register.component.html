@@ -7,7 +7,7 @@
                     <h2>REGISTER</h2>
                 </div>
                 <div class="form">
-                    <form [formGroup]="myForm">
+                    <form [formGroup]="myForm" (ngSubmit)="register()">
                         <div class="register">
                             <div class="left">
                                 <div class="form-group">
@@ -32,7 +32,7 @@
                             {{successMessage}}
                         </div>
                         <div class="btn-register">
-                            <button type="submit" (click)="register()" class="btn btn-success register">REGISTER</button>
+                            <button type="submit" class="btn btn-success register">REGISTER</button>
                         </div>
                     </form>
 

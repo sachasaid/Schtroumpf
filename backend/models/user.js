@@ -3,12 +3,12 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
 var schema = new Schema({
-    login: { type: String, require: true },
+    login: { type: String, unique: true, require: true },
     password: { type: String, require: true },
-    age: { type: String, require: true },
-    family: { type: String, require: true },
-    race: { type: String, require: true },
-    food: { type: String, require: true },
+    age: { type: String },
+    family: { type: String },
+    race: { type: String },
+    food: { type: String },
     creation_dt: { type: Date, require: true }
 });
 

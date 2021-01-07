@@ -47,21 +47,21 @@ export class RegisterComponent{
     return null;
   }
     movetoLogin() {
-    this._router.navigate(['../loginUser'], {relativeTo: this._activatedRoute});
+      this._router.navigateByUrl('/loginUser');
   }
 
   register() {
-    console.log(this.myForm.value);
-    window.location.reload()
     if (this.myForm.valid) {
       this.authService.submitRegister(this.myForm.value)
       .subscribe(
-        data => this.successMessage = "Register Success",
+        data => {
+                this.successMessage = "Register Success";
+                this._router.navigateByUrl('/loginUser');
+        },
         error => this.successMessage = "Some Error"
       )
-      this.movetoLogin();
     }
-
+    console.log(this.myForm.value);
   }
 
 }

@@ -21,7 +21,7 @@ app.use(Express.static(distDir));
 const LOCAL_DATABASE = "mongodb://localhost:27017/Schtroumpf";
 const LOCAL_PORT = 8080;
 
-mongoose.connect(process.env.MONGODB_URI || LOCAL_DATABASE, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || LOCAL_DATABASE, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 var server = app.listen(process.env.PORT || LOCAL_PORT, function() {
     var port = server.address().port;
     console.log("App now running on port", port);
@@ -92,15 +92,16 @@ app.post('/register', function(req, res, next) {
         food: req.body.food,
         creation_dt: Date.now()
     });
-
-    let promise = user.save();
-
-    promise.then(function(doc) {
-        return res.status(201).json(doc);
-    })
-
-    promise.catch(function(err) {
-        return res.status(501).json({ message: 'Error registering user.' })
+    user.save((err, doc) => {
+        if (!err) {
+            res.send(doc)
+        } else {
+            if (err.code == 11000) {
+                res.status(422).send('Duplicate login found')
+            } else {
+                return next(err)
+            }
+        }
     })
 })
 
@@ -122,7 +123,8 @@ app.post('/login', function(req, res, next) {
                 return res.status(501).json({ message: ' Invalid Credentials' });
             }
         } else {
-            return res.status(501).json({ message: 'User email is not registered.' })
+            return res.status(501).json({ message: 'User login is not registered.' })
+
         }
     });
 
