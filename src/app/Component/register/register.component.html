@@ -27,13 +27,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div style="text-align: center; color: blue;">
-                            {{successMessage}}
-                        </div>
                         <div class="btn-register">
                             <button type="submit" class="btn btn-success register">REGISTER</button>
                         </div>
+                        <div class="server-error btn-success" *ngIf="successMessage">Register Successfuly</div>
+                        <div class="server-error btn-danger" *ngIf="serverErrorMessages">{{serverErrorMessages}}</div>
                     </form>
 
                     <div class="btn-login">

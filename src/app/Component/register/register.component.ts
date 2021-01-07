@@ -10,7 +10,8 @@ import { AuthserviceService } from 'src/app/shared/authservice.service';
 })
 export class RegisterComponent{
   myForm: FormGroup;
-  successMessage =  '';
+  successMessage: boolean | undefined;
+  serverErrorMessages: string | undefined;
 
   constructor(private authService: AuthserviceService, private _router: Router, private _activatedRoute: ActivatedRoute) {
     this.myForm = new FormGroup({
@@ -55,15 +56,20 @@ export class RegisterComponent{
       this.authService.submitRegister(this.myForm.value)
       .subscribe(
         data => {
-                this.successMessage = "Register Success";
+                this.successMessage = true;
+                setTimeout(() => this.successMessage = false, 4000);
                 this._router.navigateByUrl('/loginUser');
         },
-        error => this.successMessage = "Some Error"
+        error => {
+          if (error.status === 422) {
+            this.serverErrorMessages = "LOGIN ALREADY EXIST";
+            this.myForm.reset();
+          }
+        }
       )
     }
     console.log(this.myForm.value);
   }
-
 }
 
 
